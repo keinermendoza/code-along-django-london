@@ -2,9 +2,7 @@ version: '3.9'
 
 services:
   web:
-    build: 
-      context:
-        ./project
+    image: keinermendoza/test-london:v1
     volumes:
       - ./project/:/usr/src/app/
       - static_volume:/usr/src/app/staticfiles
