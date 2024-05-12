@@ -11,16 +11,8 @@ services:
       - "127.0.0.1:8000:8000"
 
     command: gunicorn hello_django.wsgi:application --bind 0.0.0.0:8000
-    enviorment:
-      - DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
-      - SECRET_KEY=${SECRET_KEY}
-      - DEBUG=${DEBUG}
-      - SQL_ENGINE=${SQL_ENGINE}
-      - SQL_DATABASE=${SQL_DATABASE}
-      - SQL_USER=${SQL_USER}
-      - SQL_PASSWORD=${SQL_PASSWORD}
-      - SQL_HOST=${SQL_HOST}
-      - SQL_PORT=${SQL_PORT}
+    env_file:
+      - /home/env/london/.env
   
 volumes:
   static_volume:

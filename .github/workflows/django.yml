@@ -17,7 +17,4 @@ jobs:
     - uses: adambirds/docker-compose-action@v1.3.0
       with:
         compose-file: "./docker-compose.prod.yml"
-      env:
-        DJANGO_ALLOWED_HOSTS: "*"
-        SECRET_KEY: "foo"
-        DEBUG: "1"
+    
