@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  web:
+    image: keinermendoza/lodon-test:v1
+    volumes:
+      - ./project/:/usr/src/app/
+      - static_volume:/usr/src/app/staticfiles
+      - media_volume:/usr/src/app/media
+    ports:
+      - "127.0.0.1:8000:8000"
+
+    command: gunicorn hello_django.wsgi:application --bind 0.0.0.0:8000
+    enviorment:
+      - DJANGO_ALLOWED_HOSTS=${{ secrets.DJANGO_ALLOWED_HOSTS }}
+      - SECRET_KEY=${{ secrets.SECRET_KEY }}
+      - DEBUG=${{ secrets.DEBUG }}
+      - SQL_ENGINE=${{ secrets.SQL_ENGINE }}
+      - SQL_DATABASE=${{ secrets.SQL_DATABASE }}
+      - SQL_USER=${{ secrets.SQL_USER }}
+      - SQL_PASSWORD=${{ secrets.SQL_PASSWORD }}
+      - SQL_HOST=${{ secrets.SQL_HOST }}
+      - SQL_PORT=${{ secrets.SQL_PORT }}
+  
+volumes:
+  static_volume:
+  media_volume:
