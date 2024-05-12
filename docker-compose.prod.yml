@@ -2,7 +2,9 @@ version: '3.9'
 
 services:
   web:
-    image: keinermendoza/lodon-test:v1
+    build: 
+      context:
+        ./project
     volumes:
       - ./project/:/usr/src/app/
       - static_volume:/usr/src/app/staticfiles
